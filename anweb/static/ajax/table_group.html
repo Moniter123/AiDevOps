@@ -43,14 +43,7 @@
 						</tr>
 					</thead>
 					<tbody>
-                    <!--
-						<tr>
-							<td>1</td>
-							<td>新闻24小时APP</td>
-							<td><a class="fa fa-calendar" href="http://www.w3school.com.cn"></a></td>
-							<td><i class="fa fa-home"></i></td>
-						</tr>
--->
+
 					</tbody>
 				</table>
 			</div>
@@ -69,7 +62,7 @@
                 for(var j=0;j<group_list[i].length;j++){
                     var temp=JSON.parse(group_list[i][j])
                     string+='<tr><td>'+temp['id']+'</td><td>'+temp['group_name']+
-                        '</td><td><a class="fa fa-desktop" href="http://www.w3school.com.cn"></a></td><td>'
+                        '</td><td><a class="fa fa-desktop" href="#static/ajax/table_host.html"></a></td><td>'
                         + temp['remark']+'</td>';
                 }
             }
