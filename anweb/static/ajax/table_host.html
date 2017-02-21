@@ -1,0 +1,84 @@
+<div class="row">
+	<div id="breadcrumb" class="col-xs-12">
+		<a href="#" class="show-sidebar">
+			<i class="fa fa-bars"></i>
+		</a>
+		<ol class="breadcrumb pull-left">
+			<li><a href="#">Dashbord</a></li>
+			<li><a href="#">Cherry</a></li>
+			<li><a href="#">Host</a></li>
+		</ol>
+		<div id="social" class="pull-right">
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-linux"></i>
+					<span>服务器列表</span>
+				</div>
+				<div class="box-icons">
+					<a class="fa fa-plus-square-o" href="http://www.w3school.com.cn"></a>
+					<a class="fa fa-minus-square-o" href="http://www.w3school.com.cn"></a>
+					<a class="fa fa-sun-o" href="http://www.w3school.com.cn"></a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content no-padding table-responsive">
+				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-2">
+					<thead>
+						<tr>
+							<th>主机序号</th>
+							<th>主机名称</th>
+							<th>主机属组</th>
+							<th>主机类别</th>
+							<th>主机操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>1</td>
+						<td>redis.yo.miracle.com</td>
+						<td>新闻24小时APP</td>
+						<td>Redis服务器</td>
+						<td>
+							<a class="fa fa-calendar" href="http://www.w3school.com.cn"></a>
+							<a class="fa fa-calendar" href="http://www.w3school.com.cn"></a>
+							<a class="fa fa-calendar" href="http://www.w3school.com.cn"></a>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+// Run Datables plugin and create 3 variants of settings
+function AllTables(){
+	TestTable1();
+	TestTable2();
+	TestTable3();
+	LoadSelect2Script(MakeSelect2);
+}
+function MakeSelect2(){
+	$('select').select2();
+	$('.dataTables_filter').each(function(){
+		$(this).find('label input[type=text]').attr('placeholder', 'Search');
+	});
+}
+$(document).ready(function() {
+	// Load Datatables and run plugin on tables 
+	LoadDataTablesScripts(AllTables);
+	// Add Drag-n-Drop feature
+	WinMove();
+});
+</script>

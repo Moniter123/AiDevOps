@@ -19,3 +19,4 @@ def toJSON(self):
         else:
             d[attr]=getattr(self, attr)
     return json.dumps(d)
+

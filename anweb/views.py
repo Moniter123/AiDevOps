@@ -24,11 +24,11 @@ def Index(request):
 
 @require_http_methods(["GET",])
 def get_group_list(request):
-    group_list=Group.objects.all()
-    list={}
-    for group in group_list:
-        list=list+toJSON(group)
+    a=Group.objects.all()
+    list=[]
+    for i in a:
+        list.append(toJSON(i))
     print(list)
     return HttpResponse(json.dumps({
-            'group_list':json.dumps(serializers.serialize("json",Group.objects.all())),
+            'group_list':list
         }))
