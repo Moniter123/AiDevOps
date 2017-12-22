@@ -6,6 +6,27 @@
 from django import forms
 import models
 from deveops.utils import aes,checkpass
+from django.utils.translation import gettext_lazy as _
+class BaseMultipleChoiceField(forms.ModelMultipleChoiceField):
+    def __init__(self,clsName,labName):
+        return super(BaseMultipleChoiceField,self).__init__(required=True,queryset=clsName.objects.all(),
+                                                             to_field_name="id",widget=forms.SelectMultiple(attrs={'class':'select2'}),
+                                                             label=labName)
+    def label_from_instance(self, obj):
+        pass
+        #return obj.name
+
+
+class GroupMultipleChoiceField(BaseMultipleChoiceField):
+    def label_from_instance(self, obj):
+        return obj.name
+
+class StorageMultipleChoiceField(BaseMultipleChoiceField):
+
+    def label_from_instance(self, obj):
+        return obj.disk_path + ' - ' +obj.info
+
+
 class GroupCreateUpdateForm(forms.ModelForm):
     class Meta:
         model = models.Group
@@ -42,12 +63,16 @@ class HostBaseForm(forms.ModelForm):
     memory = forms.CharField(required=False,max_length=7,label="内存大小")
     root_disk = forms.CharField(required=False,max_length=7,label="本地磁盘")
     service_ip = forms.CharField(required=True,max_length=15,label="服务IP")
+    groups = GroupMultipleChoiceField(models.Group,u'应用组')
+    storages = StorageMultipleChoiceField(models.Storage,u'存储')
+
     class Meta:
         model = models.Host
         fields = ['systemtype','manage_ip',
                   'service_ip','outer_ip','server_position',
                   'hostname','normal_user','sshport',
-                  'coreness','memory','root_disk','info','sshpasswd']#,'status']
+                  'coreness','memory','root_disk','info','sshpasswd',
+                  'groups','storages']
         widgets = {
             'info':forms.Textarea(attrs=None),
             'systemtype': forms.Select(attrs={'type': 'select2 form-control'}),
@@ -70,16 +95,22 @@ class HostBaseForm(forms.ModelForm):
     def clean_service_ip(self):
         pass
 
+    # def clean_groups(self):
+    #     pass
+
+    # def clean_storages(self):
+    #     pass
+
     def before_save(self,request,commit):
-        groups=request.POST.getlist('groups',[])
-        storages=request.POST.getlist('storages',[])
-        host = self.save(commit=commit)
-        host.groups.clear()
-        host.storages.clear()
-        groups = models.Group.objects.filter(id__in=groups)
-        storages = models.Storage.objects.filter(id__in=storages)
-        host.groups.add(*groups)
-        host.storages.add(*storages)
+        # groups=request.POST.getlist('groups',[])
+        # storages=request.POST.getlist('storages',[])
+        # host = self.save(commit=commit)
+        # host.groups.clear()
+        # host.storages.clear()
+        # groups = models.Group.objects.filter(id__in=groups)
+        # storages = models.Storage.objects.filter(id__in=storages)
+        # host.groups.add(*groups)
+        # host.storages.add(*storages)
         return
 
 class HostCreateForm(HostBaseForm):
