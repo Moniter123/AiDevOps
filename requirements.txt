@@ -1,6 +1,6 @@
 Django==1.11.3
 logging==0.4.9.6
-Jinja2==2.9.6
+Jinja2==2.11.3
 MySQL-python==1.2.5
 Pillow==4.2.1
 PyNaCl==1.1.2
