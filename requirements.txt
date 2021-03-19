@@ -15,7 +15,7 @@ chardet==3.0.4
 cryptography==1.9
 django-bootstrap3==9.0.0
 django-filter==1.0.4
-djangorestframework==3.6.3
+djangorestframework==3.11.2
 enum34==1.1.6
 idna==2.5
 ipaddress==1.0.18
