@@ -22,7 +22,7 @@ ipaddress==1.0.18
 olefile==0.44
 paramiko==2.2.1
 pika==0.11.0b1
-pip==9.0.1
+pip==19.2
 pyasn1==0.2.3
 pycparser==2.18
 pycrypto==2.6.1
