@@ -33,7 +33,7 @@ selenium==3.5.0
 urllib3==1.22
 typing==3.6.2
 M2Crypto==0.27.0
-python-ldap==2.4.45
+python-ldap==3.4.0
 django-auth-ldap==1.3.0b3
 vine==1.1.4
 amqp==1.4.9
